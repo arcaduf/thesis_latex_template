@@ -1,0 +1,275 @@
+%-------------------------------------- Layout settings
+
+
+%---- Document type
+\documentclass[11pt,a4paper,twoside]{book}
+
+
+%---- Language package ---> hyphenation and shortcuts
+\usepackage[english]{babel}
+
+
+%---- Load alphabet
+\usepackage[latin1]{inputenc}
+
+
+%---- Alphabet ---> words with accent/umlaut are automatically recognized
+\usepackage[OT2,T1]{fontenc}
+\usepackage{verbatim}
+
+%---- Tables ---> it allows fancy setups for tables
+\usepackage{tabularx}
+
+
+%---- Color package ---> define default colors at will
+\usepackage{color}
+	\definecolor{header}{rgb}{0.0,0.2,0.6} 
+	\definecolor{darkheader}{rgb}{0.0,0.2,0.4} 
+	\definecolor{darkcerulean}{rgb}{0.03, 0.27, 0.49}
+	
+\usepackage[dvipsnames,svgnames,x11names,hyperref,table]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    %linkcolor=[rgb]{0.03, 0.27, 0.49}
+    linkcolor=darkcerulean,
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+	
+	
+%---- Subfigure package
+%\usepackage[pdftex]{graphicx}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfig}
+\usepackage{caption}
+\usepackage{float}
+%\usepackage{subfigure}
+%\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{supertabular} 
+\usepackage{ltxtable} 
+%---- Mathematical packages ---> write fancy formulas
+\usepackage{amsmath,amstext}
+\usepackage{amsmath,amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage{stackengine}
+% \usepackage{gensymb}
+% \usepackage{bm}
+%\usepackage{mathtext}
+
+
+
+%---- International system of units
+\usepackage[load-configurations = abbreviations]{siunitx}
+
+
+%---- PDF package ---> it simplifies pdf-handling
+\usepackage[final]{pdfpages}
+\usepackage{epstopdf}
+
+
+%---- Split equations
+\allowdisplaybreaks
+
+
+%---- Font style
+\usepackage{inconsolata}
+\usepackage[%
+eulerchapternumbers,%
+%drafting,
+pdfspacing,%
+subfig,%
+%beramono,%
+eulermath,%
+parts]{classicthesis}
+
+
+
+%---- Table
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+%---- Footnote counting throughout the document
+\renewcommand\familydefault{\sfdefault}
+\usepackage{remreset}						
+	\makeatletter							
+	\@removefromreset{footnote}{chapter}		
+	\makeatother								
+
+
+%---- Page size definition
+\usepackage{geometry}
+	\geometry{width=16cm,
+			  height=23.9cm,
+			  includeheadfoot,
+			  hcentering,
+			  headsep=1cm,
+			  footskip=1cm,
+			  headheight=15pt%,		
+			  }
+
+
+%---- Package to control features of single sections	
+\usepackage{sectsty}
+\usepackage{setspace}
+
+%---- Customize table of contents
+\usepackage{titlesec}
+%\renewcommand\contentsname{Table of Contents}
+%\titleformat{\chapter}[display]
+%  {\bfseries\large}
+%  {\filleft\MakeUppercase{\chaptertitlename} \large\thechapter}
+%  {2ex}
+%  {\titlerule\vspace{2ex}\filleft}
+%\titleformat{name=\chapter,numberless}[display]
+%  {\bfseries\large}
+%  {\titlerule}
+%  {-7ex}
+%  {\filleft\MakeUppercase}[\vspace{5ex}]
+%\titlespacing*{\chapter}{0pt}{120pt}{6pt}
+
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+\titlespacing*{\subsection}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+
+%---- Hyphenations
+\usepackage{hyphenat}
+
+		
+%---- Advanced package to cite in different ways		
+\usepackage[numbers,square,comma,sort&compress]{natbib}
+
+
+%---- Set default linespread
+\linespread{1.05}
+
+
+%---- Set fancy chapter layout
+\usepackage[Lenny]{fncychap}
+%\usepackage[newcentury]{quotchap}
+%\colorlet{chaptergrey}{darkcerulean}
+%\renewcommand{\sectfont}{darkcerulean}
+\numberwithin{equation}{chapter}
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+
+%---- PDF infos
+\newcommand{\myauthor}{Filippo Arcadu}
+\newcommand{\mytitle}{\vspace*{-0.5cm}\textbf{Reconstruction algorithms for underconstrained datasets}\vspace*{1.0cm}}
+\newcommand{\mythesis}{\textbf{PhD research plan}}
+\newcommand{\myuniversity}{ETH Z\"urich}
+\newcommand{\mysupervisor}{Advisor}
+\newcommand{\myprof}{Prof. Dr. Marco Stampanoni}
+\newcommand{\myfaculty}{Department of Information Technology and Electrical Engineering (D-ITET)}
+\newcommand{\mydate}{\today}
+
+% \usepackage[pdftex]{hyperref}
+% 	\hypersetup{bookmarksopen=true,
+% 				bookmarksopenlevel=\maxdimen,	
+% 				pdfauthor=\myauthor		,
+% 				pdftitle=\mytitle		,
+% 				pdfsubject=\mythesis		,
+% 				pdfcreator=\LaTeX{}		,
+% 				pdfproducer=\textcopyright\ \myauthor	,
+% 				pdfdisplaydoctitle=true	,
+% 				draft=true				,
+% 				colorlinks=true,
+% 				urlcolor=darkheader,
+% 				citecolor=header,  	
+% 				linkcolor=header,
+% 				}
+				
+	
+%---- Bibliography style
+\bibliographystyle{ieeetr}
+
+
+%---- Text abbreviations 
+\newcommand{\eg}{\mbox{e.\,g.}\xspace}					% command for e.g.
+\newcommand{\ie}{\mbox{i.\,e.}\xspace}					% command for i.e.
+\newcommand{\wl}{\mbox{w.\,l.\,o.\,g.}\xspace}			% command for w.l.o.g. (O.B.d.A.)
+\newcommand{\cf}{\mbox{cf.}\xspace}						% command for cf. (=confer)
+\newcommand\linefil{\leavevmode\xleaders\hbox{-}\hfill\kern0pt}
+\newtheorem{property}{Property}[subsection]
+
+
+%---- Mathematical operators  
+\DeclareMathOperator*{\argmin}{argmin}                    % argmin
+\DeclareMathOperator{\Radon}{\mathcal{R}}                 % Radon transform
+\DeclareMathOperator{\Lagr}{\mathcal{L}}                  % Lagrangian
+\DeclareMathOperator{\Four}{\mathcal{F}}                  % Fourier transform operator
+\DeclareMathOperator{\Energy}{\mathcal{E}}                % Energy
+\DeclareMathOperator{\Complexity}{\mathcal{O}}            % Complexity
+\DeclareMathOperator{\sign}{sgn}                          % Sign operator
+\DeclareMathOperator{\sinc}{sinc}                         % Sinc function
+\DeclareMathOperator{\rect}{rect}                         % Rectangular function
+\DeclareMathOperator{\Genop}{\mathcal{A}}                 % Generic linear operator
+\DeclareMathOperator{\Backproject}{\mathcal{B}}           % Backprojector
+\DeclareMathOperator{\Normal}{\mathcal{N}}                % Normal distribution
+\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}            
+\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}   
+
+\def \ITA {ITA} 
+\newcommand {\keV} {\rm{keV}} 
+\newcommand {\angstrom} {\AA} 
+
+%\DeclareMathOperator{\Four}{\mathcal{F}}
+%\DeclareMathOperator{\sign}{sgn}
+
+\def\zone    {\ensuremath{z_1}}
+\def\ztwo    {\ensuremath{z_2}}
+\def \phm {\phantom{-}} 
+\def\xt    {\ensuremath{\mathbf{x}}}
+\def\ft    {\ensuremath{\mathbf{f}}}
+\def\Aoperator    {\ensuremath{\mathbf{A}}}
+\def\fourier    {\ensuremath{\mathcal{F}}}
+\def\um    {\ensuremath{\mu}m}
+
+
+%---- Hyphenation
+\hyphenation{
+				se-ve-ral
+				o-pe-ra-tors
+				at-te-nua-tion
+				i-ma-ge
+				con-si-de-red
+				con-ti-nuous
+				a-na-ly-ti-cal
+				co-lumn
+				in-ve-stiga-ted
+				di-stan-ce
+				o-pe-ra-tor
+				pro-pa-ga-tion
+				va-rious
+				tech-ni-ques
+				cha-rac-te-ri-stic
+				Pois-so-nians
+				me-thods
+				i-te-ra-tion
+				dif-fe-ren-ces
+				dif-fe-ren-tial
+				di-scri-mi-na-ted
+				pio-nee-ring
+				ex-pe-ri-ments
+				mo-da-li-ties
+				se-pa-ra-te
+				re-fe-ren-ce
+				dif-fe-ren-tia-ted
+				si-mu-la-ted
+				re-so-lu-tion
+				he-te-ro-ge-neity
+				ir-ra-dia-ted
+}
+
+%\usepackage{lipsum}
+% \usepackage{fancyhdr}
+% \fancyhf{}
+% \rhead{Share\LaTeX}
+% \lhead{Guides and tutorials}
+% \rfoot{Page \thepage}
+%\pagestyle{plain}

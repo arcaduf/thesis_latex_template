@@ -1,0 +1,72 @@
+%----------------------------------------- Headers
+\input{header}
+
+
+%----------------------------------------- Begin Document
+\begin{document}
+
+%----------------------------------------- Title Page 
+	%\pagestyle{plain}\pdfbookmark[1]{Title}{title}
+	\input{chapters/01_title}
+	
+\clearpage
+
+
+%----------------------------------------- Reset page numbering and start with roman
+% \pagenumbering{roman}
+% \setcounter{page}{1}
+% \addtocounter{page}{1}
+	
+	
+%----------------------------------------- Abstract 
+	\input{chapters/02_abstract}
+		
+\clearpage
+
+
+%----------------------------------------- Acknoledgements 
+	\input{chapters/03_acknoledgements}
+			
+\clearpage
+
+
+%----------------------------------------- Table of contents
+
+\tableofcontents
+\clearpage
+
+
+
+%----------------------------------------- List of figures 
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\clearpage
+%\newpage
+
+
+%----------------------------------------- List of tables
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\clearpage
+%\newpage
+
+
+%----------------------------------------- Reset page numbering and start with arabic
+% \pagenumbering{arabic}
+% \setcounter{page}{1}
+% \addtocounter{page}{1}
+
+
+%----------------------------------------- Introduction
+	\input{chapters/04_introduction}
+	
+\clearpage
+
+
+%----------------------------------------- Bibliography
+{\color{darkcerulean}
+	\bibliography{mybibiliography}
+}
+	
+\end{document}

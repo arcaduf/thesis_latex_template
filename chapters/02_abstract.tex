@@ -1,0 +1,260 @@
+{
+\begin{center}
+	{\fontsize{20}{2}\usefont{OT1}{ppl}{m}{n}\selectfont \textcolor{darkcerulean}{Abstract}}
+\end{center}
+\color{black}
+\addtocounter{page}{1}
+\pagenumbering{roman}
+\setcounter{page}{1}
+Synchrotron radiation based X-ray tomographic microscopy (SRXTM) allows non-destructive 3D investigation
+of a large variety of samples at micrometer and submicrometer scale in few minutes. Several pioneering studies in the field
+of biology, material science, chemistry and paleontology were based on data acquired with this X-ray imaging technique.
+% \newline
+% The advent of new detector technology in the past few years has pushed the temporal resolution of SRXTM studies 
+% to the sub-second regime. This unprecedented acquisition speed has enabled experiments with rapidly evolving samples,
+% opening new scientific avenues. 
+\newline\newline
+If the specimen under study is either sensitive to X-ray radiation or fast-evolving, the dose irradiated to the sample %by the SRXTM scan is
+or the total scan time are 
+bounded to be under a certain limit, respectively.
+To fulfill this constraint, the exposure time per projection and the total number of views have to be reduced,
+leading in most cases to the acquisition of noisy, undersampled datasets, labeled as ``underconstrained'', 
+that present a major challenge for analytical tomographic reconstruction.
+% Several standard and state-of-the-art iterative methods, already published in literature and 
+% proved effective for medical or non-medical underconstrained datasets, had to be discarded due to the lack of versatility,
+% computational efficiency or scarse ``user-friendliness''.
+% 
+% Given the available instrumentation, To further improve the temporal resolution and to reduce the dose delivered to the sample,
+% the only possibility is to decrease either the exposure time per projection or the total number of views.
+% This is crucial to perform
+% a common strategy is to acquire noisy and/or undersampled datasets, that present a major challenge for the tomographic reconstruction
+% and are, therefore, labelled as ``underconstrained''.
+% 
+% In these cases as well as for radiation
+% sensitive specimens where the delivered dose needs to be minimized, the acquired tomographic datasets are often 
+% "underconstrained" consisting of a sub-optimal number of mostly noisy projections. The tomographic reconstruction 
+% of these datasets is a major challenge.
+% Reducing the total scan time enables SRXTM to improve the temporal resolution
+% for the study of fast-evolving samples and to decrease the dose delivered to radiation-sensitive specimens.
+% However, datasets acquired in ultra-fast low-dose scans pose a major challenge for the tomographic reconstruction 
+% and are, therefore, labelled as ``underconstrained''.
+\newline\newline
+This thesis focuses on the development of methods and strategies to address the reconstruction of underconstrained
+SRXTM absorption-contrast, in-line phase-contrast and differential phase-contrast datasets, acquired in low-dose scans
+of standard and full interior tomography.
+Considering the large amount of raw data (several terabytes) created by high-throughput SRXTM acquisitions and the heterogeneity of the samples
+investigated with this imaging technique, the guiding thread of this work was designing algorithmical solutions characterized by:
+(i) a good trade-off between reconstruction accuracy and computational efficiency; (ii) versatility in dealing with different types of 
+specimens and imaging modalities; (iii) a minimum amount of supervised a-priori knowledge and required input hyper-parameters
+to foster the  practicality of the tomographic reconstruction.
+Several standard and state-of-the-art iterative methods, already published in literature and 
+proved effective for medical or non-medical underconstrained datasets, had to be discarded due to the lack of versatility,
+computational efficiency or ``user-friendliness''.
+\newline\newline
+To guarantee computational efficiency and the flexibility necessary to address a large variety of different datasets and imaging modalities,
+the alternate direction method of multipliers plug-and-play (ADMP) has been identified as one of the most suitable iterative reconstruction scheme. 
+The ADMP provides reconstructions with satisfactory trade-off between contrast and resolution after very few iterations.
+At the same time, it allows the direct incorporation of any forward tomographic operator and any denoising method 
+for the problem regularization. 
+\newline
+The computational efficiency of the ADMP has been greatly boosted by the usage of the gridding projectors
+with minimal oversampling. The low complexity of these Fourier operators enables very fast iterative reconstructions on a single core, with
+speed comparable to what can be achieved with tomographic operators implemented on graphics processing units. The ADMP working with
+gridding projectors and parallel beam geometry is computationally suited to run on central processing unit (CPU) clusters.
+% The aim of conceiving a fast iterative algorithm able to provide accurate reconstructions of underconstrained SRXTM datasets
+% is mainly achieved through the development of the gridding projectors with minimal oversampling and the utilization of the 
+% alternate direction method of multipliers plug-and-play, as a versatile framework that allows the incorporation of
+% any denoising method as regularization scheme. 
+\newline
+Here, it is also shown that the degree of coupling between the implementations
+of the forward and backprojector plays a crucial role in the performance of an iterative algorithm: the absence of coupling
+between the tomographic operators leads in the best case scenario to sub-optimal accuracy and slower convergence rates,
+in the worst case scenario it causes the algorithm to diverge or reconstructions to be affected by severe artifacts.
+\newline
+Furthermore,
+a procedure, called ``virtual strategy'', is proposed to perform efficient iterative reconstruction of full interior tomographic datasets.
+The virtual strategy transforms the interior dataset into a standard one, avoiding to use differentiation or edge-padding throughout the 
+entire iterative reconstruction process, which reduces the amount of computations and required memory.
+\newline
+The Helgason-Ludwig sinogram filter is, finally, introduced as a fast unsupervised method to boost the accuracy
+of analytical reconstructions of strongly undercontrained datasets in standard tomography. This filter allows to reach
+an accuracy which is halfway between what achievable with analytical and iterative reconstruction.
+\newline\newline
+Studies conducted on SRXTM datasets of mouse lung tissue in full interior tomography at a resolution of 1.1$\mu$m show that the
+proposed iterative reconstruction scheme enables a dose reduction per scan by a factor between 2.5 and 3.
+For other SRXTM datasets of high structural complexity in standard tomography, dose can be reduced by a factor 5 or even more, 
+depending on the specimen under study and the envisaged quantification goal.
+% , respectively, for standard and full interior tomographic SRXTM datasets
+% characterized by high structural complexity.
+Considering a CPU cluster with 50 cores and an underconstrained SRXTM dataset of typical size (e.g. 
+500 views $\times$ 2048 detector pixels $\times$ 2048 slices), the run time expected for the proposed iterative reconstruction algorithm
+is around 25-35 minutes.
+\newline\newline
+Other aspects were also addressed, including the design of a reliable simulation framework
+to test reconstruction algorithms and assess their performance.
+\newline\newline
+Apart from the single results, the hope with this doctoral project is to convince the reader that
+a goal-oriented vision and approaching iterative algorithms as ``puzzles'', whose pieces deserve both an
+independent and inter-mixed inspection, are indispensable ingredients to further expand the frontiers of
+tomographic image reconstruction and to see complex methods becoming practical and effective tools in the hand of scientists
+from diverse fields.
+% The practical approach and the perspective of considering
+% iterative reconstruction as a puzzle, whose pieces deserve both an indipendent and inter-mixed inspection,
+% played a cardinal role in the conduction of the here presented studies.
+% The reconstruction algorithms developed in this doctoral project
+% complement the recent hardware advancements of synchrotron-based X-ray tomographic microscopy (SRXTM).
+% \newline
+% The challenge was to address the reconstruction of tomographic datasets acquired in ultra-fast low-dose scans
+% (that we loosely called ``underconstrained'') of standard absorption, in-line phase contrast, differential phase-contrast and full interior SRXTM.
+% \newline
+% The guiding thread of this work was designing algorithmical solutions characterized by: 
+% (i) an excellent accuracy/efficiency tradeoff; (ii) the versatility to tackle datasets acquired with different imaging setups and featuring a broad range of structural complexity;
+% (iii) the requirement of the minimum possible amount of supervised a-priori knowledge and input hyper-parameters.
+% \newline
+% The following results can be considered the highlights of this doctoral project.
+% Design of the gridding projectors with minimal oversampling, being a crucial tool to enable fast iterative reconstruction on CPU-clusters.
+% Characterization of the alternate direction method of multipliers plug-and-play, as a versatile iterative method that allows the incorporation of
+% any forward projector and any denoising method acting as regularization scheme. Introduction of the virtual strategy as a faster alternative to 
+% the differentiated and edge-padding techniques to perform iterative reconstruction of underconstrained full interior tomography datasets.
+% Proposition of the Helgason-Ludwig sinogram filter as an efficient, unsupervised algorithm to boost the quality of analytical reconstructions
+% of strongly undersampled datasets acquired in standard tomography.
+% \newline
+% The practical approach and the perspective of considering
+% iterative reconstruction as a puzzle, whose pieces deserve both an indipendent and inter-mixed inspection,
+% played a cardinal role in the conduction of the here presented studies.
+
+
+
+\clearpage
+
+\begin{center}
+	{\fontsize{20}{2}\usefont{OT1}{ppl}{m}{n}\selectfont \textcolor{darkcerulean}{Zusammenfassung}}
+\end{center}	
+Synchrotron-basierte tomographische R\"{o}ntgen-Mikroskopie (Synchrotron-based X-ray Tomographic Microscopy, SRXTM) liefert hochaufl\"{o}sende
+dreidimensionale Abbildungen von mannigfaltigsten Materialien auf Grundlage von Durchleuchtungsbildern. Sie erm\"{o}glicht so zerst\"{o}rungsfreie
+Untersuchung eines Probest\"{u}cks im Mikrometer- und Sub-Mikrometer-Bereich. Zahlreiche wegweisende Studien, etwa in der Biologie,
+den Werkstoffwissenschaften, der Chemie oder der Pal\"{a}ontologie, basieren auf derartigen Daten.
+\newline\newline
+Wenn dabei eine zu untersuchende Probe strahlungsempfindlich ist, oder wenn sie sich w\"{a}hrend der Aufnahme ver\"{a}ndert,
+dann f\"{u}hrt das zu Einschr\"{a}nkungen im Bildgebungsverfahren. In ersterem Fall darf die Strahlendosis einen gewissen H\"{o}chstwert
+nicht \"{u}berschreiten, in letzterem Fall ist die zur Messung verf\"{u}gbare Zeit begrenzt. Dementsprechend werden von solchen Proben
+tendenziell weniger Bilder in k\"{u}rzerer Zeit aufgenommen. Es stehen zur Rekonstruktion des r\"{a}umlichen Modells folglich weniger
+und aufgrund Rauschens schlechtere Rohdaten zur Verf\"{u}gung. Ein derartiger Datensatz wird als ``unterbestimmt'' bezeichnet, und
+seine Verarbeitung stellt eine grosse Herausforderung dar, insbesondere bei Nutzung analytischer Rekonstruktionsverfahren.
+\newline\newline
+Diese Doktorarbeit befasst sich mit der Entwicklung von Methoden und Strategien f\"{u}r die tomographische Rekonstruktion aus 
+derartig unterbestimmten und mit niedrigen Strahlungsdosen gemessen SRXTM-Rohdaten. Sie besch\"{a}ftigt sich dabei mit Absorptions- 
+und (ausbreitungsbasiertem wie differenziellem) Phasenkontrast, und sie behandelt sowohl klassische als auch innere Rekonstruktionsprobleme.
+Angesichts der enormen Datenmengen von mehreren Terabytes, die bei SRXTM in kurzer Zeit anfallen, und aufgrund der Heterogenit\"{a}t der 
+abzubildenden Proben orientieren sich die pr\"{a}sentierten algorithmischen L\"{o}sungen an folgenden Anforderungen: (i) gute Balance zwischen
+Genauigkeit und Berechnungseffizienz; (ii) Anpassungsf\"{a}higkeit an verschiedene zu untersuchende Materialien und Messprozeduren; 
+(iii) minimale Nutzung von a-priori-Wissen oder ``magischen'' Parametern, insbesondere nicht um \"{u}berhaupt Konvergenz zu erzielen. 
+Mehrere Standardverfahren und spezialisierte hochmoderne iterative Methoden mussten angesichts dieser Vorgaben mangels Anpassungsf\"{a}higkeit,
+Berechnungseffizienz oder Nutzerfreundlichkeit verworfen werden, auch wenn deren grunds\"{a}tzlicher Nutzen f\"{u}r medizinische und
+nicht-medizinische Anwendungen bereits in der Literatur bewiesen wurde.
+\newline\newline
+Hinsichtlich Berechnungseffizienz und Flexibilit\"{a}t l\"{a}sst sich die Alternate Direction Method of Multipliers in der ``Plug and Play''-Variante
+(ADMP) als geeignetes iteratives Rekonstruktionsverfahren identifizieren. ADMP liefert n\"{a}mlich nach bereits sehr wenigen Durchl\"{a}ufen Bilder
+mit ausreichendem Kontrast und guter Aufl\"{o}sung. Allgemein gesprochen berechnet ADMP die tomographische Rekonstruktion als regularisierte
+N\"{a}herungsl\"{o}sung des inversen Problems, das sich aus dem Bildgebungsverfahren ergibt: Gesucht ist n\"{a}mlich das r\"{a}umliche Bild, dessen
+k\"{u}nstliche Projektionen m\"{o}glichst mit den gemessenen Bildern \"{u}bereinstimmen. ADMP gestattet dabei freie Wahl sowohl hinsichtlich de
+verwendeten Projektionsoperators als auch in Bezug auf das zur Regularisierung genutzte Entrauschungsverfahren.
+\newline\newline
+Die Berechnungseffizienz von ADMP ist in dieser Arbeit durch Verwendung von neuartigen Griddingprojektoren mit minimaler \"{U}berabtastung
+massiv erh\"{o}ht worden. Die niedrige numerische Komplexit\"{a}t dieser Operatoren erm\"{o}glicht sehr schnelle iterative Rekonstruktion auf einzelnen
+Cores, wobei die Geschwindigkeit vergleichbar ist mit komplexen GPU-basierten Ray-Casting-Projektoren. ADMP mit Griddingprojektoren ist insofern
+optimal geeignet f\"{u}r die Ausf\"{u}hrung auf einem CPU-Cluster, wie er an Gro\ss{}forschungsanlagen vorhanden ist.
+\newline\newline
+Weiterhin zeigt diese Arbeit experimentell, dass die Wahl \"{u}bereinstimmender Vorw\"{a}rts- und R\"{u}ckw\"{a}rtsprojektoren wesentlich f\"{u}r die
+Leistung der iterativen Methode ist: Nicht zueinander passende tomographische Operatoren verursachen im Bestfall suboptimale Genauigkeit
+und langsame Konvergenz, im schlechtesten Fall konvergiert das Verfahren entweder gar nicht, oder das Rekonstruktionsergebnis weist starke Bildfehler auf.
+\newline\newline
+Hinsichtlich innerer Rekonstruktionsprobleme schl\"{a}gt diese Arbeit eine ``virtuelle Strategie'' vor, um effizient iterative Rekonstruktionen zu berechnen.
+Problem in diesem Fall ist ja, dass die gemessenen Projektionen durch Bildanteile ``verf\"{a}lscht'' sind, die nicht rekonstruierbar sind, da die
+verursachenden Strukturen au\ss{}erhalb des Rekonstruktionsbereichs liegen. Ziel der Strategie ist folglich die virtuelle Umwandlung solcher
+``innerer'' Rohdaten in \"{a}quivalente Standarddaten ohne Verwendung bekannter rechen- und speicherintensiver Verfahren zur Auff\"{u}llung fehlender
+Information. Ein solches Vorgehen macht durch Einsparung \"{u}berfl\"{u}ssiger Rechenoperationen und Speicherzugriffe iterative Methoden letztlich
+\"{u}berhaupt erst praktisch anwendbar.
+\newline\newline
+In einem letzten Teil widmet sich die Arbeit schlie\ss{}lich dem Helgason-Ludwig-Sinogramm-Filter. Es handelt sich dabei um eine schnelle,
+parameterfreie Methode zur Verbesserung der Genauigkeit der analytischen Rekonstruktion aus stark unterbestimmten Daten. Dieser Filter
+erm\"{o}glicht die analytische Berechnung einer Rekonstruktion, deren Qualit\"{a}t etwa halbwegs die eines iterativ berechneten Ergebnisses erreicht,
+obwohl der Aufwand f\"{u}r die Filterung nur unwesentlich zu Buche schl\"{a}gt.
+\newline\newline
+Zus\"{a}tzlich zu diesen Aspekten behandelt die Arbeit auch die Gestaltung eines zuverl\"{a}ssigen Simulationsrahmens zum Testen von Rekonstruktionsalgorithmen.
+Diese Regeln wurden bei Experimenten mit synthetischen Daten angewendet, um reproduzierbar zu verl\"{a}sslichen Qualit\"{a}tsaussagen zu kommen.
+\newline\newline
+Zur praktischen \"{U}berpr\"{u}fung der in dieser Arbeit vorgeschlagenen Verbesserungen wurden Studien mit SRXTM-Rohdaten durchgef\"{u}hrt. 
+F\"{u}r lokale R\"{o}ntgenbilder von M\"{a}uselungen mit einer 
+Aufl\"{o}sung von 1.1 $\mu$m 
+l\"{a}sst sich zeigen, dass bei Verwendung der vorgeschlagenen
+iterativen Rekonstruktionsmethode eine 2,5- bis 3-fache Dosisreduktion pro Scan m\"{o}glich ist. F\"{u}r andere SRXTM-Datens\"{a}tze
+mit h\"{o}herer struktureller Komplexit\"{a}t kann die Dosis um Faktor 5 oder h\"{o}her reduziert werden, abh\"{a}ngig von der untersuchten
+Probe und dem Quantifizierungsziel. Auf einem CPU-Cluster mit 50 Cores l\"{a}sst sich ein typischer SRXTM-Datensatz
+(etwa 500 Projektionen $\times$ 2048 Detektorpixel $\times$ 2048 Schichten) mit den vorgeschlagenen iterativen Verfahren in ungef\"{a}hr 25-35 Minuten verarbeiten.
+\newline\newline
+Abgesehen von den konkreten Ergebnissen dieser Doktorarbeit besteht die Hoffnung, den Leser davon zu \"{u}berzeugen, 
+dass eine zielorientierte Herangehensweise an iterative Verfahren notwendig ist. Insbesondere sollten derartige Methoden als 
+Puzzle verstanden werden, und die Teile sollten individuell und im Zusammenspiel analysiert werden. So k\"{o}nnen die bestehenden
+Grenzen tomographischer Bildrekonstruktion erweitert werden, und es wird m\"{o}glich, komplexe numerische Methoden als praktische
+und effektive Werkzeuge in die H\"{a}nde von Wissenschaftlern aus den verschiedensten Bereichen zu geben.
+
+
+% R\"{o}ntgen Synchrotronstrahlung Mikroscopie (SRXTM) erm\"{o}glicht zerst\"{o}rungsfreie 3D Untersuchung von einer gr\"{o}ssen Vielfalt von 
+% Proben auf einer Mikrometer- und Sub-Mikrometer-Skala. Zahlreiche Pilostudien im Bereich der Biologie, Werkstoffwissenschaft,
+% Chemie und Pal\"{a}ontologie wurden auf mit dieser bildgebende Technik erworbene Daten basiert.  
+% \newline\newline
+% Wenn die untersuchene Probe entweder strahlungssensible oder schnell-entwickelnde ist, sind die bestrahlte Dosis und die gesamte Scanzeit,
+% in dieser Reihenfolge, begrenzt, unter einer bestimmten Obergrenze zu sein. Um diese Beschr\"{a}nkung zu erf\"{u}llen, sollen die Einwirkdauer jeder
+% Projecktion und die Projecktionsnummer reduziert werden und in vielen F\"{a}llen leitet das zur Beschaffung von ger\"{a}uschvollen und untersammelnte
+% Daten, die ``unterbestimmt'' bennant werden und die eine gr\"{o}\ss{}e Herausforderung f\"{u}r analitische tomographische Rekonstruktion darstellt.
+% \newline\newline
+% Diese Doktorarbeit setzt auf der Entwicklung von Methoden und Strategien, um die Rekonstruktion von unterbestimmten SRXTM Daten von Absorptionskontrast,
+% Propagationsphasecontrast und Differenzialphasecontrast, die in niederdosigen Scannen von standard und innerer Tomographie erworben wurden, anzugreifen.
+% Wenn man die riesige von Experimenten mit hohen Durchsatz kreierte Datenmenge (mehrere Terabytes) und die Verschiedenartigkeit von mit dieser bildgebende
+% Technik erworbene Probenbetrachtet, war der Richtschnur dieser Arbeit, algoritmische L\"{o}sungen zu gestalten, die von den folgenden Aspekten charakterisiert
+% wurden: (i) ein guter Trade-off zwischen Rekonstruktionsgenuaigkeit und Berechnungseffizienz; (ii) Anpassungsf\"{a}higkeit verschiedene Sorte von Proben und 
+% bildgebenden Modalit\"{a}aten zh handeln; (iii) die kleinste m\"{o}glich Menge der beaufsichtigen aprioristischen Kenntnis und gebrauchten eingegebenen Parameter,
+% um die Sachlichkeit der tomographischen Rekonstruktion zu f\"{o}rdern.
+% Mehrere standard und hochmoderne iterative Methoden, die schon in Literatur ver\"{o}ffentlicht wurden und die f\"{u}r medizinische und nicht medizinische Anwendungen
+% wirksam bewiesen wurden, m\"{u}\ss{}ten verworfen werden wegen des Mangels von Anpassungsf\"{a}higkeit, Berechnungseffizienz oder Bedienerfreundlichkeit.
+% \newline\newline
+% Um Berechnungseffizienz und die gebrauchte Flexibilit\"{a}t, eine gr\"{o}\ss{}e Menge von verschiedenen Daten und bilgebenden Modalit\"{a}ten
+% anzugehen, sicherzustellen, ist die Alternierenden Richtungen Methode von Multiplikatoren ``Plug-and-play'' (ADMP) als eine der geeignesten
+% iterativen Rekonstruktionstechniken identifiziert. Die ADMP bietet Rekonstruktionen mit ausreichendem Trade-off zwischen Kontrast und Aufl\"{o}sung
+% nach sehr wenigen Iterationen an. Gleichzeitig, erm\"{o}glicht sie die Inkorporation von irgeneinem Vorw\"{a}rtsprojektor und irdendeiner Entrauschalgorithmus
+% f\"{u}r die Problemsregularisierung.
+% \newline
+% Die Berechnungseffizienz der ADMP ist von der Verwendung der Griddingdprojecktoren mit minimalem Oversampling massiv erh\"{o}ht geworden.
+% Die niedrige Komplexit\"{a}t dieser Operatoren erm\"{o}glicht sehr schnelle iterative Rekonstruktion auf einem einzelnen Core, mit 
+% Geschwindigkeit, die vergleichbar mit was dank auf GPUs implementierten tomographischen Operatoren erreicht werden kann, ist. 
+% Die ADMP mit Griddingprojektoren und parallel Strahlungsgeometrie ist berechnungseffizienzweise geeignet auf CPU clusters zu laufen.
+% \newline
+% Hier, ist es auch experimentell gezeigt, dass der Affinit\"{a}tspegel zwischen der Implementierung des Vorw\"{a}arts- und Hinterprojektors eine essentielle Rolle
+% f\"{u}r die Leistung der iterativen Methode spielt: die Affinit\"{a}tsabwesenheit zwischen tomographischen Operatoren verursacht im Extremszenario 
+% suboptimale Genauigkeit und langsamere Korvengenzrate und im Schlimmstfall-Szenario, dass der Algorithmus sich nicht ann\"{a}hert oder Rekonstruktionen von 
+% heftigen Bildfehler geschadet werden.
+% \newline
+% Au\ss{}erdem, wird eine Prozedur, die ``virtuale Stretegie'' genannt ist,  vorgeschlagen, um effiziente iterative Rekonstruktion von vollinneren tomographischen
+% Daten zu machen. Die virtuale Strategie wandelt die innere Daten in standard Daten um, ohne Differenzierung oder Randf\"{u}llung zu benutzen, das die 
+% Berechnungsmenge und die gebrauchte Speicherkapazit\"{a}t reduziert.
+% \newline
+% Das Helgason-Ludwig sinogram Filter wird, endlich, als eine schnelle unbeaufsichtigte Methode, um die Genauigkeit der analytischen Rekonstruktionen von 
+% stark unbestimmten Daten zu verbessern, eingewiesen. 
+%  Das Filter erm\"{o}glicht, eine Genauigkeit, die halbwegs zwischen was mit analytischer und iterativer Rekonstruktion erreichbar ist, zu erreichen.
+% \newline
+% Auf SRXTM Daten von Mauslungsgeweben in vollinnerer Tomographie auf einer Aufl\"{o}sung von 1.1$\mu$m gef\"{u}hrte Forschung zeigt, dass die vorgeschlagene
+% iterative Rekonstruktionsmethode eine Dosisreduktion per Scan von einem Faktor zwischen 2.5 und 3 erm\"{o}glicht. F\"{u}r andere SRXTM Daten mit h\"{o}her 
+% struktureller Komplexit\"{a}t in standard Tomographie, kann die Dosis von einem Faktor 5 oder noch mehr reduziert werden, es h\"{a}ngt ab der untersuchenen
+% Probe und dem geplannten Quantifizierungsziel.
+% Wenn man ein CPU cluster mit 50 Cores und ein unbestimmtes SRXTM Dataset von typischer Gr\"{o}\ss{}e (z.B. 500 Projecktionen $\times$ 2048 Detektorpixels
+% $\times$ 2048 Scheiben) betrachtet, ist die erwartete Berechnungszeit f\"{u}r den vorgeschlagenen iterativen Rekonstruktionsalgorithmus zwischen ungef\"{a}hr
+% 25-35 Minuten.
+% \newline\newline
+% Andere Aspekte wie die Gestaltung von einem zuverl\"{a}ssigem Simulationsrahmen, um  Rekonstruktionslgorithmen zu testen,  wurden auch eingerichtet.
+% \newline\newline
+% Abgesehen von den einzelnen Ergebnissen, ist die Hoffnung mit dieser Doktorarbeit, den Leser zu \"{u}berzeugen, dass eine zielorientierte Vision und 
+% iterative Algorithmen wie Puzzle, dessen St\"{u}cken individuell und und zusamment analysiert werden sollen, zu bearbeiten notwendige Zutaten sind,
+% um die grenze von tomographischer Bildsrekonstruktion weiterzuerweitern und zu erm\"{o}glichen, dass komplexe Methode praktische und effektive Werkzeuge
+% in der Hand von Wissenschaftleren aus verschiedenen Bereichen werden k\"{o}nnen.
+}
